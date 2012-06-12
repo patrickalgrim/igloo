@@ -26,7 +26,7 @@
   	
   	<%#= (DateTime.now.to_date.year*12+DateTime.now.to_date.month) - (job.started_on.to_date.year*12+job.started_on.to_date.month) %>
   	
-  	<%= job.next %>
+  	<%# Needs ability to get .started_on for the item in FRONT of the one in the hash here %>
   	
   	<% end %>
   <% end %>
