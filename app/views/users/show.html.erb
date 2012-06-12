@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+  <h1><%= @user.tagline %></h1>
+</p>
+
+<div>
+
+<span>Age 0 </span>
+<% @age = (DateTime.now.to_date.year) - (@user.birthdate.to_date.year) %>
+<span class="right">Age <%= @age %></span>
+<br /><br />
+
+<div class="line">
+  <% @jobs.each do |job| %>
+  	<%#= job.name %>
+  	<% unless job.started_on.blank? %>
+  	<% @date = (DateTime.now.to_date.year*12+DateTime.now.to_date.month) - (job.started_on.to_date.year*12+job.started_on.to_date.month) %>
+  	<div class="inner" style="width:<%= @age*@date/12 %>%;max-width:80%;min-width:10%;">
+	  	<div class="desc">
+	  		  	<%= job.description %>
+	  	</div>
+  	</div>
+  	
+  	<%#= (DateTime.now.to_date.year*12+DateTime.now.to_date.month) - (job.started_on.to_date.year*12+job.started_on.to_date.month) %>
+  	
+  	<%= job.next %>
+  	
+  	<% end %>
+  <% end %>
+</div>
+
+<%#= link_to 'Edit', edit_user_path(@user) %>
+<%#= link_to 'Back', users_path %>

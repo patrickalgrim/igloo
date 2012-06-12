@@ -1,0 +1,21 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+  
+  <div><%= f.label :birthdate %><br />
+  <%= f.date_select :birthdate, {:start_year => 1950, :end_year => 2012, :order => [:month, :day, :year]} %></div><br />
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %><br />
+
+<%= render :partial => "devise/shared/links" %>
