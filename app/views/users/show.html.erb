@@ -14,19 +14,23 @@
 <br /><br />
 
 <div class="line">
-  <% @jobs.each do |job| %>
+  <% @jobs.each_with_index do |job, i| %>
   	<%#= job.name %>
   	<% unless job.started_on.blank? %>
   	<% @date = (DateTime.now.to_date.year*12+DateTime.now.to_date.month) - (job.started_on.to_date.year*12+job.started_on.to_date.month) %>
+  	
   	<div class="inner" style="width:<%= @age*@date/12 %>%;max-width:80%;min-width:10%;">
 	  	<div class="desc">
-	  		  	<%= job.description %>
+	        <%= job.description %>
 	  	</div>
   	</div>
   	
-  	<%#= (DateTime.now.to_date.year*12+DateTime.now.to_date.month) - (job.started_on.to_date.year*12+job.started_on.to_date.month) %>
-  	
-  	<%# Needs ability to get .started_on for the item in FRONT of the one in the hash here %>
+  		
+  		<% prev_job = job[i + 1] %>
+  		<% unless prev_job.nil? %>
+        	<%= prev_job.started_on.to_date.month %> previous /////
+        <% end %>
+        <%= job.started_on.to_date.month %> current
   	
   	<% end %>
   <% end %>

@@ -11,11 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @jobs = @user.jobs.find(:all, :order => "started_on DESC")
-    
-    @job = @jobs.find(params[:id])
-    @previous_job = Job.previous(@job)
-    @next_picture = Job.next(@job)
-
+   
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
